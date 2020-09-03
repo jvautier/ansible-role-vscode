@@ -1,0 +1,6 @@
+---
+- name: Include ansible_distribution and ansible_os_family tasks
+  include: "{{ item }}"
+  with_first_found:
+    - "{{ ansible_distribution | lower }}.yml"
+    - "{{ ansible_os_family | lower }}.yml"
