@@ -23,3 +23,22 @@
   apt:
     name: "code-insiders"
     state: present
+
+- name: install key (apt)
+  become: true
+  apt_key:
+    url: "https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg"
+    state: present
+
+- name: install vscodium repository
+  become: true
+  apt_repository:
+    repo: deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main
+    filename: vscode
+    state: present
+
+- name: install vscodium
+  become: true
+  apt:
+    name: "codium"
+    state: present
