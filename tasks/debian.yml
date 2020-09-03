@@ -33,8 +33,8 @@
 - name: install vscodium repository
   become: true
   apt_repository:
-    repo: deb https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/repos/debs/ vscodium main
-    filename: vscode
+    repo: deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main
+    filename: vscodium
     state: present
 
 - name: install vscodium
