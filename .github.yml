@@ -6,4 +6,7 @@ tags:
   - ansible
   - ansible-role
   - vscode
-github: {}
+github:
+  has_issues: true
+  has_projects: false
+  has_wiki: false
