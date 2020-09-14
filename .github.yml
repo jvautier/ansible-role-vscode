@@ -1,0 +1,8 @@
+---
+fullname: jvautier/ansible-role-vscode
+description: Install vscode through ansible
+tags:
+  - ansible
+  - ansible-role
+  - vscode
+github: {}
