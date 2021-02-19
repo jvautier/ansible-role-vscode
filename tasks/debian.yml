@@ -1,44 +1,43 @@
 ---
-- name: install key (apt)
-  become: true
+- name: install Microsoft apt key
   apt_key:
     url: "https://packages.microsoft.com/keys/microsoft.asc"
     state: present
 
-- name: install VS Code repo (apt)
-  become: true
+- name: install Code repository
   apt_repository:
     repo: deb [arch=amd64] https://packages.microsoft.com/repos/vscode stable main
     filename: vscode
     state: present
 
-- name: install VS Code (apt)
-  become: true
-  apt:
-    name: "code"
-    state: present
-
-- name: install VS Code-Insiders (apt)
-  become: true
-  apt:
-    name: "code-insiders"
-    state: present
-
-- name: install key (apt)
-  become: true
+- name: install Codium key
   apt_key:
     url: "https://gitlab.com/paulcarroty/vscodium-deb-rpm-repo/raw/master/pub.gpg"
     state: present
 
-- name: install vscodium repository
-  become: true
+- name: install Codium repository
   apt_repository:
     repo: deb https://paulcarroty.gitlab.io/vscodium-deb-rpm-repo/debs/ vscodium main
     filename: vscodium
     state: present
 
-- name: install vscodium
-  become: true
+- name: update apt-get repo and cache
   apt:
-    name: "codium"
-    state: present
+    update_cache: yes
+    force_apt_get: yes
+    cache_valid_time: 3600
+
+- name: install Codium
+  apt:
+    name: codium
+    state: latest
+
+- name: install Code
+  apt:
+    name: code
+    state: latest
+
+- name: install Code-Insiders
+  apt:
+    name: code-insiders
+    state: latest
